@@ -1,7 +1,5 @@
-//#include <iostream>
-//using namespace std;
-//#include "Board.cpp"
 #include "../inc/Board.hh"
+#include "../inc/WinCondition.hh"
 
 int main()
 {	
@@ -31,15 +29,23 @@ int main()
 		cout << endl;
 	}*/
 
-
 	Player ja = Player(1, 'X');
 	Player ty = Player(2, 'Y');
+	WinCondition wygranko = WinCondition(3);
 	Board plansza = Board(5);
-	cout<<"Wymiar "<<plansza.returnSize()<<endl;
-	plansza.addMove(3, 2, ja);
-	plansza.addMove(2, 3, ty);
+	plansza.addMove(1, 2, ja);
+	plansza.addMove(2, 2, ja);
 	plansza.addMove(2, 3, ja);
+	/*
+	cout<<wygranko.Winner(plansza, ja, ty)<<endl;
+	
+	plansza.addMove(2, 2, ty);
+	plansza.addMove(2, 3, ty);
+	plansza.addMove(2, 4, ty);
+	plansza.addMove(2, 1, ty);
+*/
 	plansza.displayBoard(ja, ty);
+	cout<<wygranko.Winner(plansza, ja, ty)<<endl;
 	return 0;
 }
 
