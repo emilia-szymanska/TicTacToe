@@ -8,17 +8,28 @@ int main()
 	
 	cout << "Podaj rozmiar planszy: ";
 	cin >> sizeOfBoard;
+	while(sizeOfBoard <= 0 || sizeOfBoard > 50)
+	{
+		cout << "Nieprawidlowa wartosc. Wpisz ponownie: ";
+		cin >> sizeOfBoard;
+	}	
+
 	Board plansza = Board(sizeOfBoard);
 	
 	cout << "Podaj ilosc w rzedzie, ktora powoduje wygrana: ";
 	cin >> winningNumber;
+	while(winningNumber <= 1 || winningNumber > sizeOfBoard)
+	{
+		cout << "Nieprawidlowa wartosc. Wpisz ponownie: ";
+		cin >> winningNumber;
+	}	
 	WinCondition wygrana = WinCondition(winningNumber);
 
-	cout << "Podaj znak 1. gracza: ";
+	cout << "Podaj znak gracza 1: ";
 	cin >> player1Sign;
 	Player gracz1 = Player(1, player1Sign);
 
-	cout << "Podaj znak 2. gracza: ";
+	cout << "Podaj znak gracza 2: ";
 	cin >> player2Sign;
 	Player gracz2 = Player(2, player2Sign);
 
