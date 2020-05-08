@@ -108,6 +108,86 @@ unsigned int WinCondition::Winner(Board gameBoard, Player player1, Player player
 			if (flagPlayer2 == 1) return player2.playerID;	
 		}
 	}
+	
+
+	//backslash
+	unsigned int l;
+	for(unsigned int i = 0; i < (boardSize - this->winningNumber); i++)
+	{
+		for(unsigned int j = 0; j <= (boardSize - this->winningNumber); j++)
+		{
+			flagPlayer1 = 1;
+			l = i;
+			for(unsigned int k = j; k < (this->winningNumber + j); k++)
+			{
+				if(boardCopy(l,k) != player1.playerID) 
+				{
+					flagPlayer1 = 0;
+					break;
+				}
+				l++;	
+			}
+			if (flagPlayer1 == 1) return player1.playerID;	
+		}
+	}
+	
+	for(unsigned int i = 0; i < (boardSize - this->winningNumber); i++)
+	{
+		for(unsigned int j = 0; j <= (boardSize - this->winningNumber); j++)
+		{
+			flagPlayer2 = 1;
+			l = i;
+			for(unsigned int k = j; k < (this->winningNumber + j); k++)
+			{
+				if(boardCopy(l,k) != player2.playerID) 
+				{
+					flagPlayer2 = 0;
+					break;
+				}
+				l++;	
+			}
+			if (flagPlayer2 == 1) return player2.playerID;	
+		}
+	}
+	
+	//slash
+	for(unsigned int i = 0; i < (boardSize - this->winningNumber); i++)
+	{
+		for(unsigned int j = 0; j <= (boardSize - this->winningNumber); j++)
+		{
+			flagPlayer1 = 1;
+			l = i;
+			for(unsigned int k = j + (this->winningNumber) - 1; k < boardSize; k--)
+			{
+				if(boardCopy(l,k) != player1.playerID) 
+				{
+					flagPlayer1 = 0;
+					break;
+				}
+				l++;	
+			}
+			if (flagPlayer1 == 1) return player1.playerID;	
+		}
+	}
+	
+	for(unsigned int i = 0; i < (boardSize - this->winningNumber); i++)
+	{
+		for(unsigned int j = 0; j <= (boardSize - this->winningNumber); j++)
+		{
+			flagPlayer2 = 1;
+			l = i;
+			for(unsigned int k = j + (this->winningNumber) - 1; k < boardSize; k--)
+			{
+				if(boardCopy(l,k) != player2.playerID) 
+				{
+					flagPlayer2 = 0;
+					break;
+				}
+				l++;	
+			}
+			if (flagPlayer2 == 1) return player2.playerID;	
+		}
+	}
 
 	return 0;
 }

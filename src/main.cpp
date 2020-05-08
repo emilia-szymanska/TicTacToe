@@ -33,17 +33,17 @@ int main()
 	Player ty = Player(2, 'Y');
 	WinCondition wygranko = WinCondition(3);
 	Board plansza = Board(5);
-	plansza.addMove(1, 2, ja);
-	plansza.addMove(2, 2, ja);
-	plansza.addMove(2, 3, ja);
-	/*
-	cout<<wygranko.Winner(plansza, ja, ty)<<endl;
+/*	plansza.addMove(1, 0, ja);
+	plansza.addMove(2, 1, ja);
+	plansza.addMove(3, 2, ja);
 	
-	plansza.addMove(2, 2, ty);
-	plansza.addMove(2, 3, ty);
-	plansza.addMove(2, 4, ty);
-	plansza.addMove(2, 1, ty);
-*/
+	cout<<wygranko.Winner(plansza, ja, ty)<<endl;
+	*/
+//	plansza.addMove(1, 2, ty);
+	plansza.addMove(0, 2, ty);
+	plansza.addMove(1, 1, ty);
+	plansza.addMove(2, 0, ty);
+
 	plansza.displayBoard(ja, ty);
 	cout<<wygranko.Winner(plansza, ja, ty)<<endl;
 	return 0;
