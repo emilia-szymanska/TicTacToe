@@ -6,10 +6,6 @@
 class WinCondition
 {
 	unsigned int winningNumber;
-	Matrix rowSample;
-	Matrix columnSample;
-	Matrix slashSample;
-	Matrix backslashSample;
 
 	public:
 		WinCondition(unsigned int winningNumber);

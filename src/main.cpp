@@ -3,49 +3,69 @@
 
 int main()
 {	
-
-	/*int tab[5][5];
-	for(int i = 0; i<5; i++)
-		for(int j=0; j<5; j++)
-			tab[i][j]=0;
-	tab[3][2]=2;
-	tab[4][4]=3; 
-
-	for(unsigned int i = 0; i <= 5; i++)
-	{
-		for(unsigned int j = 0; j <= 5; j++)
-		{
-			if(i==0) 
-			{
-				if(j==0) cout<<"  "<<j+1;
-				else if(j!=5) cout << " " << j+1;
-			}
-			else 
-			{
-				if(j==0) cout<<i<<" ";
-				else cout<<tab[i-1][j-1]<<" ";
-			}
-		}
-		cout << endl;
-	}*/
-
-	Player ja = Player(1, 'X');
-	Player ty = Player(2, 'Y');
-	WinCondition wygranko = WinCondition(3);
-	Board plansza = Board(5);
-/*	plansza.addMove(1, 0, ja);
-	plansza.addMove(2, 1, ja);
-	plansza.addMove(3, 2, ja);
+	unsigned int winningNumber, sizeOfBoard;
+	char player1Sign, player2Sign;
 	
-	cout<<wygranko.Winner(plansza, ja, ty)<<endl;
-	*/
-//	plansza.addMove(1, 2, ty);
-	plansza.addMove(0, 2, ty);
-	plansza.addMove(1, 1, ty);
-	plansza.addMove(2, 0, ty);
+	cout << "Podaj rozmiar planszy: ";
+	cin >> sizeOfBoard;
+	Board plansza = Board(sizeOfBoard);
+	
+	cout << "Podaj ilosc w rzedzie, ktora powoduje wygrana: ";
+	cin >> winningNumber;
+	WinCondition wygrana = WinCondition(winningNumber);
 
-	plansza.displayBoard(ja, ty);
-	cout<<wygranko.Winner(plansza, ja, ty)<<endl;
+	cout << "Podaj znak 1. gracza: ";
+	cin >> player1Sign;
+	Player gracz1 = Player(1, player1Sign);
+
+	cout << "Podaj znak 2. gracza: ";
+	cin >> player2Sign;
+	Player gracz2 = Player(2, player2Sign);
+
+	unsigned int czy_wygrana = wygrana.Winner(plansza, gracz1, gracz2);
+	unsigned int wiersz, kolumna, licznik = 1;
+	cout << "Podawaj ruch jako: wiersz kolumna" << endl;
+	plansza.displayBoard(gracz1, gracz2);
+
+	while(czy_wygrana == 0)
+	{
+		if(licznik % 2 == 1)
+		{
+			cout << "Tura gracza 1. Wykonaj swoj ruch: ";
+			cin >> wiersz >> kolumna;
+			while(plansza.isMovePossible(wiersz - 1, kolumna - 1, gracz1) != true)
+			{
+				cout << "Nie mozna wykonac ruchu, wpisz ponownie: ";
+				cin >> wiersz >> kolumna;
+			}
+			plansza.addMove(wiersz - 1, kolumna - 1, gracz1); 	
+		}
+		else
+		{
+			cout << "Tura gracza 2. Wykonaj swoj ruch: ";
+			cin >> wiersz >> kolumna;
+			while(plansza.isMovePossible(wiersz - 1, kolumna - 1, gracz2) != true)
+			{
+				cout << "Nie mozna wykonac ruchu, wpisz ponownie: ";
+				cin >> wiersz >> kolumna;
+			}
+			plansza.addMove(wiersz - 1, kolumna - 1, gracz2); 	
+	
+		}
+		
+		plansza.displayBoard(gracz1, gracz2);
+		
+		if(licznik == sizeOfBoard*sizeOfBoard) 
+		{
+			cout << "REMIS!!!" << endl;
+			return 0;
+		}
+		licznik++;
+		czy_wygrana = wygrana.Winner(plansza, gracz1, gracz2);
+	}
+	
+	if(czy_wygrana == gracz1.playerID) cout << "WYGRACZA GRACZA 1"<<endl;
+	else cout << "WYGRANA GRACZA 2" << endl;
 	return 0;
 }
 

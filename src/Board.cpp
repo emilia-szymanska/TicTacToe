@@ -42,6 +42,19 @@ void Board::addMove(unsigned int i, unsigned int j, Player playerName)
 	else cout << "This field is already occupied"<<endl;
 }
 
+bool Board::isMovePossible(unsigned int i, unsigned int j, Player playerName)
+{
+	if(i >= 0 and i < this->returnSize() and j >= 0 and j < this->returnSize() )  
+	{
+		if(this->matrixOfFields(i,j) == 0) return true;
+		else return false;
+	}	
+	else 
+	{
+		return false;
+	}
+}
+
 
 void Board::resetBoard()
 {

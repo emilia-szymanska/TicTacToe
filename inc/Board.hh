@@ -29,6 +29,7 @@ class Board
 
 		void displayBoard(Player playerName1, Player playerName2);
 		void addMove(unsigned int i, unsigned int j, Player playerName);
+		bool isMovePossible(unsigned int i, unsigned int j, Player playerName);
 		void resetBoard();
 };
 
