@@ -9,7 +9,7 @@ void GameManagement()
 	
 	cout << "Size of the board: ";
 	cin >> sizeOfBoard;
-	while(sizeOfBoard <= 0 || sizeOfBoard > 50)
+	while(sizeOfBoard < 3 || sizeOfBoard > 50)
 	{
 		cout << "Incorrect value. Type again: ";
 		cin >> sizeOfBoard;

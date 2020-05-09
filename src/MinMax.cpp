@@ -1,8 +1,10 @@
 #include "../inc/MinMax.hh"
-#define MAX_DEPTH 2
 
+
+//minOrMax: true => MAX, false => MIN
 pair< int, pair<int, int> > MinMax(Board & gameBoard, Player player1, Player player2, bool minOrMax, WinCondition condition, int depth)
 {
+	int tableOfMaxDepth[11] = {0, 0, 0, 10, 5, 4, 3, 3, 3, 3, 2};
 	int MinMaxValue = -2;
 	pair<int,int> move;
 	unsigned int boardSize = gameBoard.returnSize();
@@ -32,8 +34,17 @@ pair< int, pair<int, int> > MinMax(Board & gameBoard, Player player1, Player pla
 	if(winner != 2)
 	        return {winner, {-1, -1} };
 
-	if(depth == MAX_DEPTH)
-		return {0, {-1, -1}};
+	if(boardSize <= 10)
+	{
+		if(depth == tableOfMaxDepth[boardSize])
+			return {0, {-1, -1}};
+	}
+	else
+	{
+		if(depth == 2)
+			return {0, {-1, -1}};
+
+	}	
 
 	for(unsigned int i = 0; i < boardSize; i++)
 	{	
