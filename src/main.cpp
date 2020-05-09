@@ -6,7 +6,7 @@ int main()
 {	
 	unsigned int winningNumber, sizeOfBoard;
 	char player1Sign, player2Sign;
-	
+	pair<int, pair<int, int> > resultOfMinMax;	
 	cout << "Podaj rozmiar planszy: ";
 	cin >> sizeOfBoard;
 	while(sizeOfBoard <= 0 || sizeOfBoard > 50)
@@ -54,6 +54,13 @@ int main()
 		}
 		else
 		{
+		//	cout<<czy_wygrana<<endl;
+			resultOfMinMax = MinMax(plansza, gracz1, gracz2, false, wygrana);
+		//	cout<<czy_wygrana<<endl;
+			plansza.addMove(resultOfMinMax.second.first, resultOfMinMax.second.second, gracz2);
+			//pair< int, pair<int, int> > MinMax(Board gameBoard, Player player1, Player player2, bool minOrMax, WinCondition condition)
+			
+			/*
 			cout << "Tura gracza 2. Wykonaj swoj ruch: ";
 			cin >> wiersz >> kolumna;
 			while(plansza.isMovePossible(wiersz - 1, kolumna - 1, gracz2) != true)
@@ -61,7 +68,7 @@ int main()
 				cout << "Nie mozna wykonac ruchu, wpisz ponownie: ";
 				cin >> wiersz >> kolumna;
 			}
-			plansza.addMove(wiersz - 1, kolumna - 1, gracz2); 	
+			plansza.addMove(wiersz - 1, kolumna - 1, gracz2); */
 	
 		}
 		

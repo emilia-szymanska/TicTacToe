@@ -10,7 +10,8 @@ pair< int, pair<int, int> > MinMax(Board gameBoard, Player player1, Player playe
 	int player1ID = player1.playerID;
 	int player2ID = player2.playerID;
 	int result = condition.Winner(gameBoard, player1, player2);
-	
+	pair <int, pair<int, int> > nextRecursion;
+	//	cerr<<result<<endl;	
 	if(result == 0)
 	{
 		winner = 0;
@@ -50,22 +51,24 @@ pair< int, pair<int, int> > MinMax(Board gameBoard, Player player1, Player playe
 		{
 			if(fields(i,j) == 0)
 			{
-				gameBoard.addMove(i, j, player1);
-				pair <int, pair<int, int> > nextRecursion = MinMax(gameBoard, player1, player2, !minOrMax, condition);
-				if(minOrMax)
+				if(minOrMax)			//maximizing
 				{
+					gameBoard.addMove(i, j, player1);
+					nextRecursion = MinMax(gameBoard, player1, player2, !minOrMax, condition);
 					if(MinMaxValue == -2 or nextRecursion.first > MinMaxValue)
 					{
 						MinMaxValue = nextRecursion.first;
-						move = nextRecursion.second;
+						move = {i,j};
 					}
 				}
-				else
+				else				//minimizing
 				{
+					gameBoard.addMove(i, j, player2);
+					nextRecursion = MinMax(gameBoard, player1, player2, !minOrMax, condition);
 					if(MinMaxValue == -2 or nextRecursion.first < MinMaxValue)
 					{
 						MinMaxValue = nextRecursion.first;
-						move = nextRecursion.second;
+						move = {i,j};
 					}
 
 				}

@@ -47,7 +47,7 @@ int WinCondition::Winner(Board & gameBoard, Player player1, Player player2)
 			if (flagPlayer2 == 1) return player2.playerID;	
 		}
 	}
-	
+//	cerr<<"horizontal"<<endl;
 	//vertical
 	for(unsigned int i = 0; i < boardSize; i++)
 	{
@@ -83,7 +83,7 @@ int WinCondition::Winner(Board & gameBoard, Player player1, Player player2)
 		}
 	}
 	
-
+//	cerr<<"vertical"<<endl;
 	//backslash
 	unsigned int l;
 	for(unsigned int i = 0; i < (boardSize - this->winningNumber); i++)
@@ -124,6 +124,7 @@ int WinCondition::Winner(Board & gameBoard, Player player1, Player player2)
 		}
 	}
 	
+//	cerr<<"backslash"<<endl;
 	//slash
 	for(unsigned int i = 0; i < (boardSize - this->winningNumber); i++)
 	{
@@ -163,6 +164,7 @@ int WinCondition::Winner(Board & gameBoard, Player player1, Player player2)
 		}
 	}
 	
+//	cout<<"slash"<<endl;
 	//not a draw
 	for(unsigned int i = 0; i < boardSize; i++)
 	{
@@ -171,7 +173,8 @@ int WinCondition::Winner(Board & gameBoard, Player player1, Player player2)
 			if (boardCopy(i,j) == 0) return -1;	
 		}
 	}
-
+//cout<<"nobody"<<endl;
 	//draw
+//	cout<<"draw"<<endl;
 	return 0;
 }
