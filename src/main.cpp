@@ -54,11 +54,8 @@ int main()
 		}
 		else
 		{
-		//	cout<<czy_wygrana<<endl;
-			resultOfMinMax = MinMax(plansza, gracz1, gracz2, false, wygrana);
-		//	cout<<czy_wygrana<<endl;
+			resultOfMinMax = MinMax(plansza, gracz1, gracz2, false, wygrana, 0);
 			plansza.addMove(resultOfMinMax.second.first, resultOfMinMax.second.second, gracz2);
-			//pair< int, pair<int, int> > MinMax(Board gameBoard, Player player1, Player player2, bool minOrMax, WinCondition condition)
 			
 			/*
 			cout << "Tura gracza 2. Wykonaj swoj ruch: ";
