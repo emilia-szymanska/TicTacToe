@@ -1,9 +1,8 @@
 #include "../inc/GameManagement.hh"
 
-int main()
-{
-	GameManagement();	
-/*	unsigned int winningNumber, sizeOfBoard;
+void GameManagement()
+{	
+	unsigned int winningNumber, sizeOfBoard;
 	char AISign, userSign;
 	pair<int, pair<int, int> > resultOfMinMax;	
 	unsigned int row, column, counter = 0;
@@ -84,7 +83,5 @@ int main()
 		if (if_victory == AI.playerID) cout << "AI WON! :(" << endl;
 		else cout << "DRAW" <<endl;
 	}
-*/
-	return 0;
-}
+}	
 

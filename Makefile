@@ -1,8 +1,11 @@
-tictactoe: obj obj/main.o obj/Board.o obj/WinCondition.o obj/MinMax.o
-	g++ -g -o tictactoe obj/main.o obj/Board.o obj/WinCondition.o obj/MinMax.o
+tictactoe: obj obj/main.o obj/Board.o obj/WinCondition.o obj/MinMax.o obj/GameManagement.o
+	g++ -g -o tictactoe obj/main.o obj/Board.o obj/WinCondition.o obj/MinMax.o obj/GameManagement.o
 
 obj/main.o: src/main.cpp
 	g++ -g -c -o obj/main.o src/main.cpp
+
+obj/GameManagement.o: src/GameManagement.cpp inc/GameManagement.hh inc/MinMax.hh
+	g++ -g -c -o obj/GameManagement.o src/GameManagement.cpp 
 
 obj/MinMax.o: src/MinMax.cpp inc/MinMax.hh inc/WinCondition.hh
 	g++ -g -c -o obj/MinMax.o src/MinMax.cpp 
