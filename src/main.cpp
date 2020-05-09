@@ -1,5 +1,6 @@
 #include "../inc/Board.hh"
-#include "../inc/WinCondition.hh"
+//#include "../inc/WinCondition.hh"
+#include "../inc/MinMax.hh"
 
 int main()
 {	
@@ -33,12 +34,12 @@ int main()
 	cin >> player2Sign;
 	Player gracz2 = Player(2, player2Sign);
 
-	unsigned int czy_wygrana = wygrana.Winner(plansza, gracz1, gracz2);
+	int czy_wygrana = wygrana.Winner(plansza, gracz1, gracz2);
 	unsigned int wiersz, kolumna, licznik = 1;
 	cout << "Podawaj ruch jako: wiersz kolumna" << endl;
 	plansza.displayBoard(gracz1, gracz2);
 
-	while(czy_wygrana == 0)
+	while(czy_wygrana == -1)
 	{
 		if(licznik % 2 == 1)
 		{
@@ -65,18 +66,20 @@ int main()
 		}
 		
 		plansza.displayBoard(gracz1, gracz2);
-		
-		if(licznik == sizeOfBoard*sizeOfBoard) 
-		{
-			cout << "REMIS!!!" << endl;
-			return 0;
-		}
 		licznik++;
 		czy_wygrana = wygrana.Winner(plansza, gracz1, gracz2);
 	}
 	
-	if(czy_wygrana == gracz1.playerID) cout << "WYGRACZA GRACZA 1"<<endl;
-	else cout << "WYGRANA GRACZA 2" << endl;
+	if(czy_wygrana == gracz1.playerID) 
+	{
+		cout << "WYGRACZA GRACZA 1"<<endl;
+	}
+	else 
+	{
+		if (czy_wygrana == gracz2.playerID) cout << "WYGRANA GRACZA 2" << endl;
+		else cout << "REMIS" <<endl;
+	}
+
 	return 0;
 }
 

@@ -6,7 +6,7 @@ WinCondition::WinCondition(unsigned int winningNumber)
 
 }
 
-unsigned int WinCondition::Winner(Board gameBoard, Player player1, Player player2)
+int WinCondition::Winner(Board & gameBoard, Player player1, Player player2)
 {
 	unsigned int boardSize = gameBoard.returnSize();
 	Matrix boardCopy = gameBoard.returnMatrixOfFields();
@@ -162,6 +162,16 @@ unsigned int WinCondition::Winner(Board gameBoard, Player player1, Player player
 			if (flagPlayer2 == 1) return player2.playerID;	
 		}
 	}
+	
+	//not a draw
+	for(unsigned int i = 0; i < boardSize; i++)
+	{
+		for(unsigned int j = 0; j < boardSize; j++)
+		{
+			if (boardCopy(i,j) == 0) return -1;	
+		}
+	}
 
+	//draw
 	return 0;
 }

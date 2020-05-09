@@ -9,7 +9,7 @@ class WinCondition
 
 	public:
 		WinCondition(unsigned int winningNumber);
-		unsigned int Winner(Board gameBoard, Player player1, Player player2); 
+		int Winner(Board & gameBoard, Player player1, Player player2); 
 };
 
 

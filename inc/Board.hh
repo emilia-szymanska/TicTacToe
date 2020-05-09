@@ -18,7 +18,7 @@ class Board
 			this->matrixOfFields = Matrix(newDimension, newDimension);
 		}
 
-		Matrix returnMatrixOfFields()
+		Matrix & returnMatrixOfFields()
 		{
 			return this->matrixOfFields;
 		}	
@@ -29,6 +29,7 @@ class Board
 
 		void displayBoard(Player playerName1, Player playerName2);
 		void addMove(unsigned int i, unsigned int j, Player playerName);
+		void removeMove(unsigned int i, unsigned int j);
 		bool isMovePossible(unsigned int i, unsigned int j, Player playerName);
 		void resetBoard();
 };
